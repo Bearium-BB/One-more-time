@@ -16,3 +16,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.test {
+    margin: 15px;
+}
+
+.d-flex {
+    flex-wrap: wrap;
+}

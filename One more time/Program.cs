@@ -41,6 +41,10 @@ namespace One_more_time
                 name: "Brands",
                 pattern: "{controller=Brands}/{action=Index}/{id?}");
 
+            app.MapControllerRoute(
+            name: "Laptops",
+            pattern: "{controller=Laptops}/{action=Index}/{id?}");
+
             app.Run();
         }
     }

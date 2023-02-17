@@ -54,13 +54,13 @@ namespace One_more_time.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Id")] Brand brand)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Brand brand)
         {
-            
+
             _context.Add(brand);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-            
+       
             return View(brand);
         }
 
@@ -85,7 +85,7 @@ namespace One_more_time.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Id")] Brand brand)
+        public async Task<IActionResult> Edit(int? id, [Bind("Id,Name")] Brand brand)
         {
             if (id != brand.Id)
             {
@@ -136,7 +136,7 @@ namespace One_more_time.Controllers
         // POST: Brands/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             if (_context.Bands == null)
             {
@@ -152,7 +152,7 @@ namespace One_more_time.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BrandExists(int id)
+        private bool BrandExists(int? id)
         {
           return _context.Bands.Any(e => e.Id == id);
         }

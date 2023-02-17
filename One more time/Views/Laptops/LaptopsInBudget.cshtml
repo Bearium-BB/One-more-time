@@ -1,0 +1,29 @@
+﻿@using One_more_time.Models.Form
+@using One_more_time.Models.Table
+@model LaptopsInBudgetForm
+
+<form method="post" class="form-group">
+    <label asp-for="Number" class="form-label mb-3"></label>
+    <input asp-for="Number" class="form-control mb-3"></input>
+    <span asp-validation-for="Number" class="form-text mb-3"></span>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+@if(ViewBag.data != null){
+    <div class="d-flex p-2">
+        @foreach (Laptop i in ViewBag.data)
+        {
+            <div class="card test" style="width: 18rem;">
+                <img src="@i.Img" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@i.Brand.Name</h5>
+                    <p class="card-text">@i.Model</p>
+                    <p class="card-text">Release year: @i.Year</p>
+                    <p class="card-text">@i.Price</p>
+                </div>
+            </div>
+        }
+    </div>
+}
+

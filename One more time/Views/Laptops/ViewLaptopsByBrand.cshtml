@@ -1,0 +1,65 @@
+﻿@using One_more_time.Models.Form
+@using One_more_time.Models.Table
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model ViewLaptopsByBrandForm
+
+
+<form method="post" class="form-group">
+    <div>
+        <label asp-for="Brand"></label>
+        <select asp-for="Brand" asp-items="(IEnumerable<SelectListItem>)ViewBag.BrandItems"></select>
+    </div>
+
+    <div>
+        <label asp-for="Ordering"></label>
+        <select asp-for="Ordering" asp-items="(IEnumerable<SelectListItem>)ViewBag.OrderingItems"></select>
+    </div>
+
+    <div>
+        <label asp-for="NumberMin" class="form-label mb-3"></label>
+        <input asp-for="NumberMin" class="form-control mb-3"></input>
+        <span asp-validation-for="NumberMin" class="form-text mb-3"></span>
+    </div>
+
+    <div>
+        <label asp-for="NumberMax" class="form-label mb-3"></label>
+        <input asp-for="NumberMax" class="form-control mb-3"></input>
+        <span asp-validation-for="NumberMax" class="form-text mb-3"></span>
+    </div>
+
+    <div>
+        <label asp-for="YearMin" class="form-label mb-3"></label>
+        <input asp-for="YearMin" class="form-control mb-3"></input>
+        <span asp-validation-for="YearMin" class="form-text mb-3"></span>
+    </div>
+
+    <div>
+        <label asp-for="YearMax" class="form-label mb-3"></label>
+        <input asp-for="YearMax" class="form-control mb-3"></input>
+        <span asp-validation-for="YearMax" class="form-text mb-3"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@if(ViewBag.data != null){
+    <div class="d-flex p-2">
+    @foreach (Laptop i in ViewBag.data)
+    {
+        <div class="card test" style="width: 18rem;">
+            <img src="@i.Img" class="card-img-top" alt="...">
+            <div class="card-body">
+@*                <h5 class="card-title">@i.Brand.Name</h5>*@                
+                <p class="card-text">@i.Model</p>
+                <p class="card-text">Release year: @i.Year</p>
+                <p class="card-text">@i.Price</p>
+            </div>
+        </div>
+    }
+    </div>
+}

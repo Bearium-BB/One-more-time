@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using One_more_time.Data;
 
@@ -11,9 +12,11 @@ using One_more_time.Data;
 namespace One_more_time.Migrations
 {
     [DbContext(typeof(LaptopShopContext))]
-    partial class LaptopShopContextModelSnapshot : ModelSnapshot
+    [Migration("20230216183458_name123456789")]
+    partial class name123456789
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,7 +49,7 @@ namespace One_more_time.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BrandId")
+                    b.Property<int?>("BrandId")
                         .HasColumnType("int");
 
                     b.Property<string>("Img")
@@ -70,13 +73,9 @@ namespace One_more_time.Migrations
 
             modelBuilder.Entity("One_more_time.Models.Table.Laptop", b =>
                 {
-                    b.HasOne("One_more_time.Models.Table.Brand", "Brand")
+                    b.HasOne("One_more_time.Models.Table.Brand", null)
                         .WithMany("Laptops")
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Brand");
+                        .HasForeignKey("BrandId");
                 });
 
             modelBuilder.Entity("One_more_time.Models.Table.Brand", b =>

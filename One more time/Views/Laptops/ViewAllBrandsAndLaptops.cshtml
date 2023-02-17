@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IEnumerable<One_more_time.Models.Table.Laptop>
+@using One_more_time.Models.Table;
+@using One_more_time.Models;
+@using One_more_time.Data;
+
+
+
+<div class="d-flex p-2">
+
+@foreach (Laptop j in Model)
+{
+            <div class="card test" style="width: 18rem;">
+                <img src="@j.Img" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">@j.Brand.Name</h5>
+                <p class="card-text">@j.Model</p>
+                <p class="card-text">Release year: @j.Year</p>
+                <p class="card-text">@j.Price</p>
+                </div>
+            </div>
+}
+</div>
+
